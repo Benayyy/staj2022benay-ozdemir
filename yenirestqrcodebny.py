@@ -17,6 +17,7 @@ while True:
         link = data
         break
  
+ 
     cv2.imshow('QR okuyucu uygulamasi', img)
     if cv2.waitKey(1) == ord('q'):
         break
@@ -27,7 +28,7 @@ cv2.destroyAllWindows()
 
 
 # qr code degeri bu degiskene yazilacak!
-qrcode_opncv_ile_okunan = "benay"
+qrcode_opncv_ile_okunan = data, bbox, _
 
 # qr code kaydet
 r = requests.post(
@@ -36,10 +37,13 @@ r = requests.post(
         'code': qrcode_opncv_ile_okunan,
         'title': 'deneme3',
         'date': '%s' % now,
+        'note' : 'birnot'
     })
 
 print(r.text)
 
 # qr code listesini iste
 r = requests.get("http://127.0.0.1:5000/qrcodes")
+
 print(r.text)
+
