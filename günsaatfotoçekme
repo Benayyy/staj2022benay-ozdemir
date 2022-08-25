@@ -1,0 +1,9 @@
+import cv2
+from datetime import datetime
+camera =cv2.VideoCapture(0)
+return_value,image=camera.read()
+now = datetime.now()
+file_name = now.strftime('%Y-%m')
+cv2.imwrite(file_name + '.png', image) 
+camera.release()
+cv2.destroyAllWindows()
